@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Project Dashboard | Alan Crew Editz</title><link rel="icon" href="assets/favicon.png">
+<style>
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(145deg,#090526,#171052);color:#f7f5ff;font-family:Arial,sans-serif}
+header{padding:17px 6%;border-bottom:1px solid #ffffff18;display:flex;justify-content:space-between;background:#0e0937dd;position:sticky;top:0;backdrop-filter:blur(14px);z-index:5}
+header a{color:#8cc9bb;text-decoration:none}main{width:min(1050px,90%);margin:auto;padding:40px 0}
+.layout{display:grid;grid-template-columns:1fr .82fr;gap:18px}.panel{background:#ffffff09;border:1px solid #ffffff18;border-radius:20px;padding:22px}
+label{display:block;font-size:13px;color:#aaa7d0;margin:14px 0 6px}input,textarea{width:100%;padding:12px;border-radius:9px;border:1px solid #ffffff18;background:#0b0730;color:#fff}
+textarea{min-height:90px}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}button{padding:11px 14px;border-radius:9px;border:0;font-weight:700;cursor:pointer}
+.save{background:linear-gradient(100deg,#744cff,#ed74ba);color:#fff}.clear{background:#ffffff0d;color:#fff;border:1px solid #ffffff18}.danger{background:#4b211d;color:#ffd4c9}
+.list{display:grid;gap:9px;margin-top:15px}.item{padding:13px;border:1px solid #ffffff18;border-radius:12px;display:flex;justify-content:space-between;gap:8px}
+.item small{color:#8cc9bb}.item button{padding:7px 9px;font-size:11px}.note{color:#aaa7d0;font-size:13px;line-height:1.7;margin-top:16px}
+.thumb-preview{margin-top:8px;border-radius:12px;overflow:hidden;border:1px solid #ffffff18;aspect-ratio:16/9;background:#0b0730}.thumb-preview img{width:100%;height:100%;object-fit:cover}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}@media(max-width:800px){.layout,.row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><b>ALAN CREW EDITZ · PROJECT DASHBOARD</b><a href="index.html">View site ↗</a></header>
+<main>
+<h1>Project Dashboard</h1>
+<p style="color:#aaa7d0;font-size:15px">Add, edit or remove projects. Changes are saved in this browser and the main page will show them after refresh.</p>
+<div class="layout">
+<section class="panel">
+<h2 id="formTitle">Add New Project</h2>
+<form id="form">
+<input type="hidden" id="id">
+<label>Project title</label><input id="title" required placeholder="My cinematic edit">
+<label>Description</label><textarea id="desc" required placeholder="Tell visitors what this project is about."></textarea>
+<div class="row"><div><label>Category</label><input id="cat" placeholder="Video Editing"></div><div><label>Tools / Technologies</label><input id="tags" placeholder="Premiere Pro, After Effects"></div></div>
+<label>Thumbnail image</label><input id="file" type="file" accept="image/*">
+<label>Or image URL / GitHub repository path</label><input id="thumb" placeholder="assets/projects/project.jpg">
+<div id="preview" class="thumb-preview" style="display:none"><img id="previewImg" alt="Thumbnail preview"></div>
+<label>YouTube video URL</label><input id="video" placeholder="https://www.youtube.com/watch?v=...">
+<div class="row"><div><label>GitHub URL</label><input id="git"></div><div><label>Live demo URL</label><input id="demo"></div></div>
+<p><button class="save" type="submit" id="submit">Add Project</button> <button class="clear" type="button" id="clear">Clear</button></p>
+<p id="status" style="color:#8cc9bb;font-size:13px"></p>
+</form>
+<div class="actions"><button class="save" id="export">Download projects.js</button><button class="clear" id="reset">Reset to GitHub file</button></div>
+<p class="note">The Dashboard saves changes locally in this browser. For GitHub Pages publishing, use <b>Download projects.js</b> and replace the old <b>projects.js</b> in your GitHub repository.</p>
+</section>
+<section class="panel"><h2>Your Projects</h2><div id="list" class="list"></div></section>
+</div></main>
+
+<script src="projects.js"></script>
+<script>
+const KEY="alanCrewProjects";
+const $=id=>document.getElementById(id);
+function defaults(){return JSON.parse(JSON.stringify(window.PORTFOLIO_PROJECTS||[]))}
+function getProjects(){try{const x=localStorage.getItem(KEY);return x?JSON.parse(x):defaults()}catch(e){return defaults()}}
+function saveProjects(p){localStorage.setItem(KEY,JSON.stringify(p));render()}
+function esc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
+function render(){
+ const p=getProjects();
+ $("list").innerHTML=p.length?p.map(x=>`<div class="item"><div><small>${esc(x.category||"Project")}</small><br><b>${esc(x.title)}</b></div><div><button type="button" onclick="editProject('${esc(x.id)}')">Edit</button> <button type="button" class="danger" onclick="deleteProject('${esc(x.id)}')">Delete</button></div></div>`).join(""):'<p class="note">No projects yet.</p>';
+}
+function clearForm(){
+ $("id").value="";$("title").value="";$("desc").value="";$("cat").value="";$("tags").value="";$("thumb").value="";$("video").value="";$("git").value="";$("demo").value="";$("file").value="";
+ $("preview").style.display="none";$("formTitle").textContent="Add New Project";$("submit").textContent="Add Project";
+}
+function editProject(id){
+ const p=getProjects().find(x=>x.id===id);if(!p)return;
+ $("id").value=p.id;$("title").value=p.title||"";$("desc").value=p.description||"";$("cat").value=p.category||"";
+ $("tags").value=(p.tags||[]).join(", ");$("thumb").value=p.thumbnail&&p.thumbnail.startsWith("data:")?"":(p.thumbnail||"");
+ $("video").value=p.video||"";$("git").value=p.github||"";$("demo").value=p.demo||"";
+ if(p.thumbnail){$("previewImg").src=p.thumbnail;$("preview").style.display="block"}
+ $("formTitle").textContent="Edit Project";$("submit").textContent="Save Changes";window.scrollTo({top:0,behavior:"smooth"});
+}
+function deleteProject(id){
+ if(!confirm("Remove this project?"))return;
+ saveProjects(getProjects().filter(p=>p.id!==id));$("status").textContent="Project removed.";clearForm();
+}
+$("file").addEventListener("change",()=>{
+ const f=$("file").files[0];if(!f)return;
+ const r=new FileReader();r.onload=()=>{$("previewImg").src=r.result;$("preview").style.display="block";$("thumb").value=""};r.readAsDataURL(f);
+});
+$("thumb").addEventListener("input",()=>{if($("thumb").value){$("previewImg").src=$("thumb").value;$("preview").style.display="block"}});
+$("form").addEventListener("submit",e=>{
+ e.preventDefault();
+ const existing=getProjects(), id=$("id").value||("project-"+Date.now());
+ const old=existing.find(p=>p.id===id), file=$("file").files[0];
+ const finish=thumbnail=>{
+  const item={id,title:$("title").value.trim(),description:$("desc").value.trim(),category:$("cat").value.trim(),tags:$("tags").value.split(",").map(x=>x.trim()).filter(Boolean),thumbnail:thumbnail||"",video:$("video").value.trim(),github:$("git").value.trim(),demo:$("demo").value.trim()};
+  const next=old?existing.map(p=>p.id===id?item:p):[...existing,item];saveProjects(next);
+  $("status").textContent=old?"Project updated.":"Project added.";clearForm();
+ };
+ if(file){const r=new FileReader();r.onload=()=>finish(r.result);r.readAsDataURL(file)}
+ else finish($("thumb").value.trim()||old?.thumbnail||"");
+});
+$("clear").onclick=clearForm;
+$("reset").onclick=()=>{if(confirm("Remove local changes and return to the projects.js file?")){localStorage.removeItem(KEY);render();clearForm();$("status").textContent="Reset complete."}};
+$("export").onclick=()=>{
+ const source="window.PORTFOLIO_PROJECTS = "+JSON.stringify(getProjects(),null,2)+";\n";
+ const blob=new Blob([source],{type:"text/javascript;charset=utf-8"}),url=URL.createObjectURL(blob),a=document.createElement("a");
+ a.href=url;a.download="projects.js";document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);
+ $("status").textContent="projects.js downloaded.";
+};
+render();
+</script>
+</body></html>
