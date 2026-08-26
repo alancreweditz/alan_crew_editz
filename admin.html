@@ -4,24 +4,24 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Project Dashboard | Alan Crew Editz</title><link rel="icon" href="assets/favicon.png?v=2">
 <style>
-*{box-sizing:border-box}body{margin:0;background:linear-gradient(145deg,#090526,#171052);color:#f7f5ff;font-family:Arial,sans-serif}
-header{padding:17px 6%;border-bottom:1px solid #ffffff18;display:flex;justify-content:space-between;background:#0e0937dd;position:sticky;top:0;backdrop-filter:blur(14px);z-index:5}
-header a{color:#8cc9bb;text-decoration:none}main{width:min(1050px,90%);margin:auto;padding:40px 0}
+*{box-sizing:border-box}body{margin:0;background:#050505;color:#f7f5ff;font-family:Arial,sans-serif}
+header{padding:17px 6%;border-bottom:1px solid #ffffff18;display:flex;justify-content:space-between;background:#111111dd;position:sticky;top:0;backdrop-filter:blur(14px);z-index:5}
+header a{color:#ff6b70;text-decoration:none}main{width:min(1050px,90%);margin:auto;padding:40px 0}
 .layout{display:grid;grid-template-columns:1fr .82fr;gap:18px}.panel{background:#ffffff09;border:1px solid #ffffff18;border-radius:20px;padding:22px}
-label{display:block;font-size:13px;color:#aaa7d0;margin:14px 0 6px}input,textarea{width:100%;padding:12px;border-radius:9px;border:1px solid #ffffff18;background:#0b0730;color:#fff}
+label{display:block;font-size:13px;color:#a9a9a9;margin:14px 0 6px}input,textarea{width:100%;padding:12px;border-radius:9px;border:1px solid #ffffff18;background:#0d0d0d;color:#fff}
 textarea{min-height:90px}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}button{padding:11px 14px;border-radius:9px;border:0;font-weight:700;cursor:pointer}
-.save{background:linear-gradient(100deg,#744cff,#ed74ba);color:#fff}.clear{background:#ffffff0d;color:#fff;border:1px solid #ffffff18}.danger{background:#4b211d;color:#ffd4c9}
+.save{background:linear-gradient(100deg,#e50914,#b20710);color:#fff}.clear{background:#ffffff0d;color:#fff;border:1px solid #ffffff18}.danger{background:#3b1114;color:#ffd4c9}
 .list{display:grid;gap:9px;margin-top:15px}.item{padding:13px;border:1px solid #ffffff18;border-radius:12px;display:flex;justify-content:space-between;gap:8px}
-.item small{color:#8cc9bb}.item button{padding:7px 9px;font-size:11px}.note{color:#aaa7d0;font-size:13px;line-height:1.7;margin-top:16px}
-.thumb-preview{margin-top:8px;border-radius:12px;overflow:hidden;border:1px solid #ffffff18;aspect-ratio:16/9;background:#0b0730}.thumb-preview img{width:100%;height:100%;object-fit:cover}
+.item small{color:#ff6b70}.item button{padding:7px 9px;font-size:11px}.note{color:#a9a9a9;font-size:13px;line-height:1.7;margin-top:16px}
+.thumb-preview{margin-top:8px;border-radius:12px;overflow:hidden;border:1px solid #ffffff18;aspect-ratio:16/9;background:#0d0d0d}.thumb-preview img{width:100%;height:100%;object-fit:cover}
 .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}@media(max-width:800px){.layout,.row{grid-template-columns:1fr}}
-</style>
+body{position:relative;overflow-x:hidden}body:before,body:after{content:"";position:fixed;z-index:-1;pointer-events:none;border-radius:50%;filter:blur(70px);opacity:.38}.layout{position:relative}body:before{width:360px;height:360px;left:-120px;top:10vh;background:#e50914;animation:dashOne 15s ease-in-out infinite alternate}body:after{width:300px;height:300px;right:-90px;bottom:5vh;background:#7f0008;animation:dashTwo 18s ease-in-out infinite alternate}@keyframes dashOne{to{transform:translate(170px,300px) scale(1.2)}}@keyframes dashTwo{to{transform:translate(-160px,-180px) scale(1.25)}}</style>
 </head>
 <body>
 <header><b>ALAN CREW EDITZ · PROJECT DASHBOARD</b><a href="index.html">View site ↗</a></header>
 <main>
 <h1>Project Dashboard</h1>
-<p style="color:#aaa7d0;font-size:15px">Add, edit or remove projects. Changes are saved in this browser and the main page will show them after refresh.</p>
+<p style="color:#a9a9a9;font-size:15px">Add, edit or remove projects. Changes are saved in this browser and the main page will show them after refresh.</p>
 <div class="layout">
 <section class="panel">
 <h2 id="formTitle">Add New Project</h2>
@@ -36,7 +36,7 @@ textarea{min-height:90px}.row{display:grid;grid-template-columns:1fr 1fr;gap:10p
 <label>YouTube video URL</label><input id="video" placeholder="https://www.youtube.com/watch?v=...">
 <div class="row"><div><label>GitHub URL</label><input id="git"></div><div><label>Live demo URL</label><input id="demo"></div></div>
 <p><button class="save" type="submit" id="submit">Add Project</button> <button class="clear" type="button" id="clear">Clear</button></p>
-<p id="status" style="color:#8cc9bb;font-size:13px"></p>
+<p id="status" style="color:#ff6b70;font-size:13px"></p>
 </form>
 <div class="actions"><button class="save" id="export">Download projects.js</button><button class="clear" id="reset">Reset to GitHub file</button></div>
 <p class="note">The Dashboard saves changes locally in this browser. For GitHub Pages publishing, use <b>Download projects.js</b> and replace the old <b>projects.js</b> in your GitHub repository.</p>
