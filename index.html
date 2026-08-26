@@ -74,7 +74,14 @@ footer{border-top:1px solid var(--line);padding:22px 0;color:#8581a8;font-size:.
 </style>
 <style>
 .project{cursor:pointer;transition:transform .25s ease,filter .25s ease}.project:hover{transform:translateY(-5px);filter:brightness(1.08)}.project .visual{position:relative;background:#0c0830}.project .visual img{transition:transform .35s ease}.project:hover .visual img{transform:scale(1.04)}.play{position:absolute;left:12px;bottom:12px;padding:7px 10px;border-radius:999px;background:#090526dd;border:1px solid #ffffff25;font-size:.68rem;font-weight:700}.placeholder{height:100%;min-height:180px;display:grid;place-items:center;color:#aaa7d0;font-size:2rem}.modal{position:fixed;inset:0;background:#050318eF;display:none;align-items:center;justify-content:center;padding:20px;z-index:1000;backdrop-filter:blur(10px)}.modal.open{display:flex}.modal-box{width:min(900px,96vw);max-height:92vh;overflow:auto;background:#100a39;border:1px solid #ffffff20;border-radius:22px;box-shadow:0 30px 100px #000b}.modal-media{aspect-ratio:16/9;background:#070421}.modal-media iframe,.modal-media img{width:100%;height:100%;display:block;border:0;object-fit:cover}.modal-body{padding:22px}.modal-close{position:absolute;right:25px;top:20px;width:42px;height:42px;border-radius:50%;background:#ffffff12;color:#fff;border:1px solid #ffffff25;font-size:22px;cursor:pointer}.modal-body h2{font-size:2rem;margin:0 0 8px}.modal-body p{color:var(--muted);font-size:.95rem;line-height:1.7}.modal-links{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}.modal-tags{display:flex;gap:6px;flex-wrap:wrap}.modal-open{overflow:hidden}@media(max-width:600px){.modal{padding:8px}.modal-body{padding:16px}.modal-body h2{font-size:1.5rem}}
-</style></head>
+</style><script>
+(function(){
+  var s=document.createElement("script");
+  s.src="projects.js?v="+Date.now();
+  s.onload=function(){window.dispatchEvent(new Event("projects-ready"));};
+  document.head.appendChild(s);
+})();
+</script></head>
 <body>
 <header>
  <a class="logo" href="#">ALAN CREW EDITZ</a>
@@ -133,17 +140,10 @@ footer{border-top:1px solid var(--line);padding:22px 0;color:#8581a8;font-size:.
 <div id="projectModal" class="modal" aria-hidden="true"><button class="modal-close" onclick="closeProject()" aria-label="Close">×</button><div class="modal-box"><div id="modalMedia" class="modal-media"></div><div class="modal-body"><h2 id="modalTitle"></h2><p id="modalDesc"></p><div id="modalTags" class="modal-tags"></div><div id="modalLinks" class="modal-links"></div></div></div></div></main>
 <footer><div class="wrap">© 2026 Alan Crew Editz | All Rights Reserved</div></footer>
 
-<script src="projects.js"></script>
-<script src="projects.js"></script>
+
+
 <script>
-const PROJECT_STORAGE_KEY = "alanCrewProjects";
-function getProjects(){
-  try{
-    const saved=localStorage.getItem(PROJECT_STORAGE_KEY);
-    if(saved) return JSON.parse(saved);
-  }catch(e){}
-  return Array.isArray(window.PORTFOLIO_PROJECTS)?window.PORTFOLIO_PROJECTS:[];
-}
+function getProjects(){return Array.isArray(window.PORTFOLIO_PROJECTS)?window.PORTFOLIO_PROJECTS:[]}
 function esc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
 function yt(u){const m=(u||"").match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([A-Za-z0-9_-]{6,})/);return m?m[1]:""}
 function render(){
@@ -168,7 +168,7 @@ function openProject(id){
 function closeProject(){document.getElementById('projectModal').classList.remove('open');document.getElementById('modalMedia').innerHTML='';document.body.classList.remove('modal-open')}
 document.getElementById('projectModal').addEventListener('click',e=>{if(e.target.id==='projectModal')closeProject()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeProject()});
-render();
+window.addEventListener("projects-ready",render);
 </script>
 </body>
 </html>
