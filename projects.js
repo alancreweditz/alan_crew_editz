@@ -42,19 +42,18 @@ window.PORTFOLIO_PROJECTS = [
     "github": "",
     "demo": ""
   },
-  {
-    "id": "project-1787767391557",
-    "title": "Netflix Clone",
-    "description": "A modern Netflix-style streaming website project.",
-    "category": "Web Development",
+    {
+    "id": "video-edits",
+    "title": "Video Edits",
+    "description": "Professional cinematic video projects.",
+    "category": "Video Editing",
     "tags": [
-      "HTML",
-      "CSS",
-      "JavaScript"
+      "Premiere Pro",
+      "After Effects"
     ],
     "thumbnail": "",
-    "video": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    "github": "https://github.com/alancreweditz",
-    "demo": "https://alancreweditz.github.io/alan_crew_editz/"
-  }
+    "video": "",
+    "github": "",
+    "demo": ""
+  },
 ];
