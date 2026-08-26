@@ -34,4 +34,15 @@ window.PORTFOLIO_PROJECTS = [
     github: "",
     demo: ""
   }
+    {
+    id: "video-edits V1",
+    title: "Video Edits",
+    description: "Professional cinematic video projects.",
+    category: "Video Editing",
+    tags: ["Premiere Pro", "After Effects"],
+    thumbnail: "",
+    video: "",
+    github: "",
+    demo: ""
+  }
 ];
