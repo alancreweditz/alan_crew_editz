@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Project Dashboard | Alan Crew Editz</title><link rel="icon" href="assets/favicon.png?v=2">
+<style>
+*{box-sizing:border-box}body{margin:0;background:#000050;color:#f0ffff;font-family:Arial,sans-serif}
+header{padding:17px 6%;border-bottom:1px solid #ffffff18;display:flex;justify-content:space-between;background:#111111dd;position:sticky;top:0;backdrop-filter:blur(14px);z-index:5}
+header a{color:#60a5fa;text-decoration:none}main{width:min(1050px,90%);margin:auto;padding:40px 0}
+.layout{display:grid;grid-template-columns:1fr .82fr;gap:18px}.panel{background:#ffffff09;border:1px solid #ffffff18;border-radius:20px;padding:22px}
+label{display:block;font-size:13px;color:#9adbe8;margin:14px 0 6px}input,textarea{width:100%;padding:12px;border-radius:9px;border:1px solid #ffffff18;background:#00143d;color:#fff}
+textarea{min-height:90px}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}button{padding:11px 14px;border-radius:9px;border:0;font-weight:700;cursor:pointer}
+.save{background:linear-gradient(100deg,#00b0d0,#0070b0);color:#fff}.clear{background:#ffffff0d;color:#fff;border:1px solid #ffffff18}.danger{background:#003b68;color:#c0f0f0}
+.list{display:grid;gap:9px;margin-top:15px}.item{padding:13px;border:1px solid #ffffff18;border-radius:12px;display:flex;justify-content:space-between;gap:8px}
+.item small{color:#60a5fa}.item button{padding:7px 9px;font-size:11px}.note{color:#9adbe8;font-size:13px;line-height:1.7;margin-top:16px}
+.thumb-preview{margin-top:8px;border-radius:12px;overflow:hidden;border:1px solid #ffffff18;background:#00143d}.thumb-preview img{width:100%;height:auto;display:block;object-fit:contain}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}@media(max-width:800px){.layout,.row{grid-template-columns:1fr}}
+body{position:relative;overflow-x:hidden}body:before,body:after{content:"";position:fixed;z-index:-1;pointer-events:none;border-radius:50%;filter:blur(70px);opacity:.38}.layout{position:relative}body:before{width:360px;height:360px;left:-120px;top:10vh;background:#00b0d0;animation:dashOne 15s ease-in-out infinite alternate}body:after{width:300px;height:300px;right:-90px;bottom:5vh;background:#14532d;animation:dashTwo 18s ease-in-out infinite alternate}@keyframes dashOne{to{transform:translate(170px,300px) scale(1.2)}}@keyframes dashTwo{to{transform:translate(-160px,-180px) scale(1.25)}}</style>
+<style id="s04-theme-1-9">
+:root{--blue:#168cff;--blue2:#55b6ff;--green:#00b0d0;--green2:#34d399;--ink:#000050}
+body{background:radial-gradient(circle at 12% 8%,rgba(0,176,208,.16),transparent 28%),radial-gradient(circle at 88% 14%,rgba(0,112,176,.14),transparent 30%),#000050!important}
+body:before{content:"";position:fixed;inset:-25%;pointer-events:none;z-index:-1;background:radial-gradient(circle at 25% 35%,rgba(0,176,208,.18),transparent 24%),radial-gradient(circle at 72% 62%,rgba(0,112,176,.15),transparent 25%);filter:blur(55px);animation:s04fluid 16s ease-in-out infinite alternate}
+@keyframes s04fluid{0%{transform:translate3d(-3%,-2%,0) scale(1)}50%{transform:translate3d(4%,3%,0) scale(1.08)}100%{transform:translate3d(-2%,5%,0) scale(1.02)}}
+header,.topbar,nav{background:linear-gradient(90deg,rgba(5,10,20,.94),rgba(10,12,22,.86),rgba(22,8,12,.92))!important;border-bottom:1px solid rgba(0,176,208,.22)!important;backdrop-filter:blur(18px)}
+nav a,.topbar a{transition:.25s ease} nav a:hover,.topbar a:hover{color:#fff!important;text-shadow:0 0 14px rgba(0,176,208,.75)}
+.btn,.button,.cta{border-color:rgba(0,176,208,.45)!important;background:linear-gradient(135deg,rgba(0,176,208,.20),rgba(0,112,176,.16))!important;box-shadow:0 0 24px rgba(0,176,208,.08)}
+.project,.card{border-color:rgba(0,176,208,.16)!important;background:linear-gradient(145deg,rgba(13,19,32,.82),rgba(18,10,18,.78))!important}
+.project:hover,.card:hover{border-color:rgba(0,112,176,.42)!important;box-shadow:0 18px 55px rgba(0,0,0,.35),0 0 28px rgba(0,176,208,.10)}
+.play{background:linear-gradient(135deg,var(--green),var(--blue))!important}
+.pill{border-color:rgba(0,176,208,.28)!important;background:rgba(0,176,208,.08)!important}
+</style>
+
+<style id="reference-blue-cyan-theme">
+:root{
+ --ref-navy:#000050;
+ --ref-blue:#0070b0;
+ --ref-blue2:#0090c0;
+ --ref-cyan:#00b0d0;
+ --ref-cyan2:#00d0e0;
+ --ref-light:#c0f0f0;
+}
+body{
+ background:
+ radial-gradient(circle at 12% 10%,rgba(0,176,208,.20),transparent 28%),
+ radial-gradient(circle at 86% 72%,rgba(0,112,176,.22),transparent 30%),
+ linear-gradient(135deg,#000050,#001b4d 55%,#000d2b)!important;
+ color:#f0ffff!important;
+}
+body:before{
+ background:
+ radial-gradient(circle at 25% 35%,rgba(0,208,224,.20),transparent 25%),
+ radial-gradient(circle at 72% 62%,rgba(0,112,176,.22),transparent 26%)!important;
+}
+header,.topbar,nav{
+ background:linear-gradient(90deg,rgba(0,0,80,.96),rgba(0,45,104,.90),rgba(0,112,176,.78))!important;
+ border-bottom:1px solid rgba(0,208,224,.30)!important;
+ box-shadow:0 8px 35px rgba(0,0,80,.25);
+}
+nav a:hover,.topbar a:hover{
+ color:#c0f0f0!important;
+ text-shadow:0 0 14px rgba(0,208,224,.75);
+}
+.nav-btn,.primary,.save,.btn,.button,.cta{
+ background:linear-gradient(100deg,#0070b0,#00b0d0)!important;
+ color:#f0ffff!important;
+ border-color:rgba(192,240,240,.35)!important;
+ box-shadow:0 0 24px rgba(0,176,208,.18);
+}
+.secondary,.clear{
+ background:rgba(0,112,176,.12)!important;
+ color:#c0f0f0!important;
+ border-color:rgba(0,208,224,.25)!important;
+}
+.project,.card,.panel,.info-card{
+ border-color:rgba(0,208,224,.18)!important;
+ background:linear-gradient(145deg,rgba(0,45,104,.82),rgba(0,27,77,.82))!important;
+}
+.project:hover,.card:hover{
+ border-color:rgba(0,208,224,.48)!important;
+ box-shadow:0 18px 55px rgba(0,0,80,.38),0 0 28px rgba(0,176,208,.16);
+}
+.project small{color:#00d0e0!important}
+.pill{
+ border-color:rgba(0,208,224,.30)!important;
+ background:rgba(0,176,208,.10)!important;
+ color:#c0f0f0!important;
+}
+.danger{
+ background:#003b68!important;
+ color:#c0f0f0!important;
+ border-color:rgba(0,208,224,.24)!important;
+}
+</style>
+
+<style id="s04-2-3-admin-ui">
+:root{--neon-blue:#168cff;--electric-blue:#0070ff;--cyan:#00d9ff;--ice:#bff8ff}
+html,body{background:#000!important;color:#fff!important}
+body:before{width:560px!important;height:560px!important;left:-170px!important;top:5vh!important;background:radial-gradient(circle,#0070ff88 0,rgba(0,217,255,.32) 25%,transparent 68%)!important;filter:blur(75px)!important;animation:dash23a 8s ease-in-out infinite alternate!important}
+body:after{width:500px!important;height:500px!important;right:-150px!important;bottom:-80px!important;background:radial-gradient(circle,#00d9ff72 0,rgba(0,112,255,.30) 28%,transparent 70%)!important;filter:blur(80px)!important;animation:dash23b 10s ease-in-out infinite alternate!important}
+@keyframes dash23a{to{transform:translate(250px,260px) scale(1.18)}}
+@keyframes dash23b{to{transform:translate(-240px,-190px) scale(1.22)}}
+header{margin:14px auto 0!important;width:min(1050px,90%)!important;border:1px solid rgba(0,153,255,.38)!important;border-radius:24px!important;background:rgba(2,7,15,.78)!important;box-shadow:0 12px 45px #000b,0 0 25px rgba(0,126,255,.12)!important}
+header a{color:#25a7ff!important}
+.panel{background:rgba(2,8,16,.68)!important;border-color:rgba(0,153,255,.25)!important;box-shadow:0 15px 45px #0008}
+input,textarea{background:#05070b!important;border-color:rgba(0,153,255,.22)!important;color:#fff!important}
+.save{background:linear-gradient(100deg,#0070ff,#00cfff)!important;box-shadow:0 0 20px rgba(0,126,255,.24)}
+.clear{background:rgba(0,112,255,.10)!important;border-color:rgba(0,217,255,.24)!important}
+.danger{background:#07101b!important;color:#bff8ff!important;border-color:rgba(0,217,255,.22)!important}
+.item{background:rgba(0,112,255,.045)!important;border-color:rgba(0,153,255,.20)!important;border-radius:16px!important}
+</style>
+<style>
+<style>
+/* S04 2.5 — visible neon smoke background */
+html, body {
+  background:#000 !important;
+}
+body {
+  position:relative;
+  isolation:isolate;
+  overflow-x:hidden;
+}
+.neon-smoke {
+  position:fixed !important;
+  inset:0 !important;
+  width:100vw;
+  height:100vh;
+  z-index:0 !important;
+  pointer-events:none !important;
+  overflow:hidden;
+  background:#000;
+}
+.neon-smoke::before,
+.neon-smoke::after {
+  content:"";
+  position:absolute;
+  width:75vw;
+  height:42vw;
+  min-width:650px;
+  min-height:360px;
+  border-radius:50%;
+  filter:blur(65px);
+  opacity:.72;
+  mix-blend-mode:screen;
+  will-change:transform;
+}
+.neon-smoke::before {
+  left:-25vw;
+  top:8vh;
+  background:
+    radial-gradient(ellipse at 42% 50%,
+      rgba(0,112,255,.95) 0%,
+      rgba(0,180,255,.72) 22%,
+      rgba(0,217,255,.35) 42%,
+      transparent 70%);
+  animation:neonSmokeLeft 8s ease-in-out infinite alternate;
+}
+.neon-smoke::after {
+  right:-25vw;
+  top:40vh;
+  background:
+    radial-gradient(ellipse at 55% 48%,
+      rgba(0,217,255,.9) 0%,
+      rgba(0,112,255,.66) 24%,
+      rgba(0,190,255,.30) 45%,
+      transparent 72%);
+  animation:neonSmokeRight 10s ease-in-out infinite alternate;
+}
+.neon-smoke .smoke-line {
+  position:absolute;
+  width:90vw;
+  height:32vw;
+  min-width:700px;
+  min-height:250px;
+  border-radius:50%;
+  filter:blur(28px);
+  opacity:.58;
+  border:7px solid rgba(0,180,255,.32);
+  box-shadow:
+    0 0 35px rgba(0,126,255,.55),
+    0 0 90px rgba(0,217,255,.35);
+  will-change:transform;
+}
+.neon-smoke .smoke-line:nth-child(1) {
+  left:-28vw;
+  top:18vh;
+  transform:rotate(-13deg);
+  animation:neonRibbon1 7s ease-in-out infinite alternate;
+}
+.neon-smoke .smoke-line:nth-child(2) {
+  right:-30vw;
+  top:46vh;
+  transform:rotate(14deg);
+  animation:neonRibbon2 9s ease-in-out infinite alternate;
+}
+.neon-smoke .smoke-line:nth-child(3) {
+  left:5vw;
+  top:68vh;
+  width:70vw;
+  height:22vw;
+  opacity:.4;
+  transform:rotate(-8deg);
+  animation:neonRibbon3 11s ease-in-out infinite alternate;
+}
+@keyframes neonSmokeLeft {
+  0%   {transform:translate3d(-4vw,2vh,0) rotate(-8deg) scale(.92)}
+  50%  {transform:translate3d(13vw,-7vh,0) rotate(8deg) scale(1.16)}
+  100% {transform:translate3d(28vw,8vh,0) rotate(16deg) scale(1.02)}
+}
+@keyframes neonSmokeRight {
+  0%   {transform:translate3d(8vw,-5vh,0) rotate(11deg) scale(1.02)}
+  50%  {transform:translate3d(-12vw,8vh,0) rotate(-9deg) scale(1.2)}
+  100% {transform:translate3d(-27vw,-5vh,0) rotate(-17deg) scale(.96)}
+}
+@keyframes neonRibbon1 {
+  0%   {transform:translate3d(-5vw,1vh,0) rotate(-13deg) scaleX(.88)}
+  50%  {transform:translate3d(10vw,-5vh,0) rotate(-1deg) scaleX(1.12)}
+  100% {transform:translate3d(22vw,5vh,0) rotate(10deg) scaleX(.94)}
+}
+@keyframes neonRibbon2 {
+  0%   {transform:translate3d(5vw,0,0) rotate(14deg) scaleX(.9)}
+  50%  {transform:translate3d(-12vw,-6vh,0) rotate(2deg) scaleX(1.12)}
+  100% {transform:translate3d(-24vw,5vh,0) rotate(-10deg) scaleX(.96)}
+}
+@keyframes neonRibbon3 {
+  0%   {transform:translate3d(-2vw,0,0) rotate(-8deg) scaleX(.9)}
+  50%  {transform:translate3d(7vw,-4vh,0) rotate(5deg) scaleX(1.12)}
+  100% {transform:translate3d(16vw,4vh,0) rotate(10deg) scaleX(.95)}
+}
+
+/* Keep the page content above the animated smoke */
+body > *:not(.neon-smoke) {
+  position:relative;
+  z-index:1;
+}
+header {
+  z-index:30 !important;
+}
+
+@media (max-width:700px) {
+  .neon-smoke::before,
+  .neon-smoke::after {
+    width:125vw;
+    height:70vw;
+    min-width:520px;
+    min-height:300px;
+  }
+  .neon-smoke .smoke-line {
+    width:125vw;
+    height:48vw;
+    min-width:520px;
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  .neon-smoke::before,
+  .neon-smoke::after,
+  .neon-smoke .smoke-line {
+    animation:none !important;
+  }
+}
+</style><style id="rounded-project-cards">
+.project,.card{
+  border-radius:22px!important;
+  overflow:hidden;
+}
+.project .copy{padding:16px!important}
+.project .visual{border-radius:0!important}
+</style><style id="s04-26-update">
+/* S04 2.6 — rounded cards + clean white small text + neon-blue project titles */
+:root{
+  --neon-blue:#00bfff;
+  --neon-cyan:#00e5ff;
+  --white:#ffffff;
+}
+.card,
+.quick-info,
+.quick-info-card,
+.what-i-do,
+.what-i-do-card,
+.info-card,
+.service-card,
+.project-card,
+.project,
+.contact-card,
+.contact-item{
+  border-radius:24px !important;
+  overflow:hidden;
+}
+.project-card,
+.project{
+  border-color:rgba(0,191,255,.42) !important;
+  box-shadow:0 0 24px rgba(0,191,255,.10);
+}
+.project-card h1,
+.project-card h2,
+.project-card h3,
+.project-card h4,
+.project-card .title,
+.project h1,
+.project h2,
+.project h3,
+.project h4,
+.project .title{
+  color:var(--neon-blue) !important;
+  text-shadow:0 0 10px rgba(0,191,255,.55),0 0 24px rgba(0,191,255,.22);
+}
+small,
+.muted,
+.meta,
+.label,
+.subtitle,
+.eyebrow,
+.quick-info small,
+.quick-info .label,
+.what-i-do small,
+.what-i-do .label,
+.contact-card small,
+.contact-item small{
+  color:#fff !important;
+}
+</style></head>
+<body><div class="neon-smoke" aria-hidden="true"><span class="smoke-line"></span><span class="smoke-line"></span><span class="smoke-line"></span></div>
+<header><b>ALAN CREW EDITZ · PROJECT DASHBOARD</b><a href="index.html">View site ↗</a></header>
+<main>
+<h1>Project Dashboard</h1>
+<p style="color:#9adbe8;font-size:15px">Add, edit or remove projects. Changes are saved in this browser and the main page will show them after refresh.</p>
+<div class="layout">
+<section class="panel">
+<h2 id="formTitle">Add New Project</h2>
+<form id="form">
+<input type="hidden" id="id">
+<label>Project title</label><input id="title" required placeholder="My cinematic edit">
+<label>Description</label><textarea id="desc" required placeholder="Tell visitors what this project is about."></textarea>
+<div class="row"><div><label>Category</label><input id="cat" placeholder="Video Editing"></div><div><label>Tools / Technologies</label><input id="tags" placeholder="Premiere Pro, After Effects"></div></div>
+<div class="row"><div><label>Project start date</label><input id="startDate" type="date"></div><div><label>Project end date</label><input id="endDate" type="date"></div></div>
+<label>Thumbnail image</label><input id="file" type="file" accept="image/*">
+<label>Or image URL / GitHub repository path</label><input id="thumb" placeholder="assets/projects/project.jpg">
+<div id="preview" class="thumb-preview" style="display:none"><img id="previewImg" alt="Thumbnail preview"></div>
+<label>YouTube video URL</label><input id="video" placeholder="https://www.youtube.com/watch?v=...">
+<div class="row"><div><label>GitHub URL</label><input id="git"></div><div><label>Live demo URL</label><input id="demo"></div></div>
+<p><button class="save" type="submit" id="submit">Add Project</button> <button class="clear" type="button" id="clear">Clear</button></p>
+<p id="status" style="color:#60a5fa;font-size:13px"></p>
+</form>
+<div class="actions"><button class="save" id="export">Download projects.js</button><button class="clear" id="reset">Reset to GitHub file</button></div>
+<p class="note">The Dashboard saves changes locally in this browser. For GitHub Pages publishing, use <b>Download projects.js</b> and replace the old <b>projects.js</b> in your GitHub repository.</p>
+</section>
+<section class="panel"><h2>Your Projects</h2><div id="list" class="list"></div></section>
+</div></main>
+
+<script src="projects.js"></script>
+<script>
+const KEY="alanCrewProjects";
+const $=id=>document.getElementById(id);
+function defaults(){return JSON.parse(JSON.stringify(window.PORTFOLIO_PROJECTS||[]))}
+function getProjects(){try{const x=localStorage.getItem(KEY);return x?JSON.parse(x):defaults()}catch(e){return defaults()}}
+function saveProjects(p){localStorage.setItem(KEY,JSON.stringify(p));render()}
+function esc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
+function render(){
+ const p=getProjects();
+ $("list").innerHTML=p.length?p.map(x=>`<div class="item"><div><small>${esc(x.category||"Project")}</small><br><b>${esc(x.title)}</b>${(x.startDate||x.endDate)?`<br><small>${x.startDate?`Start: ${esc(x.startDate)}`:""}${x.startDate&&x.endDate?" · ":""}${x.endDate?`End: ${esc(x.endDate)}`:""}</small>`:""}</div><div><button type="button" onclick="editProject('${esc(x.id)}')">Edit</button> <button type="button" class="danger" onclick="deleteProject('${esc(x.id)}')">Delete</button></div></div>`).join(""):'<p class="note">No projects yet.</p>';
+}
+function clearForm(){
+ $("id").value="";$("title").value="";$("desc").value="";$("cat").value="";$("tags").value="";$("startDate").value="";$("endDate").value="";$("thumb").value="";$("video").value="";$("git").value="";$("demo").value="";$("file").value="";
+ $("preview").style.display="none";$("formTitle").textContent="Add New Project";$("submit").textContent="Add Project";
+}
+function editProject(id){
+ const p=getProjects().find(x=>x.id===id);if(!p)return;
+ $("id").value=p.id;$("title").value=p.title||"";$("desc").value=p.description||"";$("cat").value=p.category||"";
+ $("tags").value=(p.tags||[]).join(", ");$("startDate").value=p.startDate||"";$("endDate").value=p.endDate||"";$("thumb").value=p.thumbnail&&p.thumbnail.startsWith("data:")?"":(p.thumbnail||"");
+ $("video").value=p.video||"";$("git").value=p.github||"";$("demo").value=p.demo||"";
+ if(p.thumbnail){$("previewImg").src=p.thumbnail;$("preview").style.display="block"}
+ $("formTitle").textContent="Edit Project";$("submit").textContent="Save Changes";window.scrollTo({top:0,behavior:"smooth"});
+}
+function deleteProject(id){
+ if(!confirm("Remove this project?"))return;
+ saveProjects(getProjects().filter(p=>p.id!==id));$("status").textContent="Project removed.";clearForm();
+}
+$("file").addEventListener("change",()=>{
+ const f=$("file").files[0];if(!f)return;
+ const r=new FileReader();r.onload=()=>{$("previewImg").src=r.result;$("preview").style.display="block";$("thumb").value=""};r.readAsDataURL(f);
+});
+$("thumb").addEventListener("input",()=>{if($("thumb").value){$("previewImg").src=$("thumb").value;$("preview").style.display="block"}});
+$("form").addEventListener("submit",e=>{
+ e.preventDefault();
+ const existing=getProjects(), id=$("id").value||("project-"+Date.now());
+ const old=existing.find(p=>p.id===id), file=$("file").files[0];
+ const finish=thumbnail=>{
+  const item={id,title:$("title").value.trim(),description:$("desc").value.trim(),category:$("cat").value.trim(),tags:$("tags").value.split(",").map(x=>x.trim()).filter(Boolean),startDate:$("startDate").value,endDate:$("endDate").value,thumbnail:thumbnail||"",video:$("video").value.trim(),github:$("git").value.trim(),demo:$("demo").value.trim()};
+  const next=old?existing.map(p=>p.id===id?item:p):[...existing,item];saveProjects(next);
+  $("status").textContent=old?"Project updated.":"Project added.";clearForm();
+ };
+ if(file){const r=new FileReader();r.onload=()=>finish(r.result);r.readAsDataURL(file)}
+ else finish($("thumb").value.trim()||old?.thumbnail||"");
+});
+$("clear").onclick=clearForm;
+$("reset").onclick=()=>{if(confirm("Remove local changes and return to the projects.js file?")){localStorage.removeItem(KEY);render();clearForm();$("status").textContent="Reset complete."}};
+$("export").onclick=()=>{
+ const source="window.PORTFOLIO_PROJECTS = "+JSON.stringify(getProjects(),null,2)+";\n";
+ const blob=new Blob([source],{type:"text/javascript;charset=utf-8"}),url=URL.createObjectURL(blob),a=document.createElement("a");
+ a.href=url;a.download="projects.js";document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);
+ $("status").textContent="projects.js downloaded.";
+};
+render();
+</script>
+</body></html>
+<style id="blue-green-final">
+:root{--blue:#3b82f6;--blue2:#60a5fa;--green:#00b0d0;--green2:#34d399;--ink:#000050}
+body:before{background:#3b82f6!important}
+body:after{background:#00b0d0!important}
+.nav-btn,.primary,.save{background:linear-gradient(100deg,#3b82f6,#00b0d0)!important}
+.play{background:linear-gradient(135deg,#3b82f6,#00b0d0)!important}
+.grad{background:linear-gradient(90deg,#fff,#60a5fa,#00b0d0)!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important}
+.glow{background:#3b82f635!important}
+</style>
