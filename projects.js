@@ -30,6 +30,36 @@ window.PORTFOLIO_PROJECTS = [
     "demo": "https://youtu.be/f7sCq1Mbta0?si=ue580-_u6Vv6dXNx"
   },
   {
+    "id": "project-1787854792066",
+    "title": "TRAILER #01",
+    "description": "Owner - DR Nagollagama\nEditor - Alan Crew",
+    "category": "Video Editing",
+    "tags": [
+      "Filmora & After Effects"
+    ],
+    "startDate": "2025-02-26",
+    "endDate": "2025-02-28",
+    "thumbnail": "https://i.postimg.cc/Xvxgy4V2/e1.png",
+    "video": "https://youtu.be/D5At96H62BI",
+    "github": "https://github.com/alancreweditz",
+    "demo": "https://youtu.be/D5At96H62BI"
+  },
+  {
+    "id": "project-1787855313443",
+    "title": "2025 Revision",
+    "description": "Owner - DR Nagollagama\nEditor - Alan Crew\nBatch - 2025\nSubject - Physics",
+    "category": "Video Editing",
+    "tags": [
+      "Filmora & After Effects"
+    ],
+    "startDate": "2025-04-30",
+    "endDate": "2025-05-01",
+    "thumbnail": "https://i.postimg.cc/nhNXRW3p/e2.png",
+    "video": "https://youtu.be/TEAH1wYUvGI",
+    "github": "https://github.com/alancreweditz",
+    "demo": "https://youtu.be/TEAH1wYUvGI"
+  }
+  {
     "id": "project-1787845207058",
     "title": "Vehicle Introduction | Promotional | Motivational",
     "description": "Owner - DR Nagollagama\nEditor - Alan Crew",
@@ -149,34 +179,5 @@ window.PORTFOLIO_PROJECTS = [
     "github": "https://github.com/alancreweditz",
     "demo": "https://youtu.be/aaP65faUTfc?si=lnuGAZl6VwKGsouZ"
   },
-  {
-    "id": "project-1787854792066",
-    "title": "TRAILER #01",
-    "description": "Owner - DR Nagollagama\nEditor - Alan Crew",
-    "category": "Video Editing",
-    "tags": [
-      "Filmora & After Effects"
-    ],
-    "startDate": "2025-02-26",
-    "endDate": "2025-02-28",
-    "thumbnail": "https://i.postimg.cc/Xvxgy4V2/e1.png",
-    "video": "https://youtu.be/D5At96H62BI",
-    "github": "https://github.com/alancreweditz",
-    "demo": "https://youtu.be/D5At96H62BI"
-  },
-  {
-    "id": "project-1787855313443",
-    "title": "2025 Revision",
-    "description": "Owner - DR Nagollagama\nEditor - Alan Crew\nBatch - 2025\nSubject - Physics",
-    "category": "Video Editing",
-    "tags": [
-      "Filmora & After Effects"
-    ],
-    "startDate": "2025-04-30",
-    "endDate": "2025-05-01",
-    "thumbnail": "https://i.postimg.cc/nhNXRW3p/e2.png",
-    "video": "https://youtu.be/TEAH1wYUvGI",
-    "github": "https://github.com/alancreweditz",
-    "demo": "https://youtu.be/TEAH1wYUvGI"
-  }
+  
 ];
