@@ -1,0 +1,23 @@
+// Edit this file to update all pricing on GitHub Pages.
+// pricing.html reads this file directly. Use pricing-admin.html to edit and download a new copy.
+window.PRICING_DATA = {
+  rate: 328.4,
+  bulk: {5:10,10:15,20:20},
+  membership: [
+    {id:'creator', name:'Creator', price:15000, days:30, videosPerDay:1, maxMinutes:3, normalPerVideo:800, note:'Up to 1 video per day · maximum 3 minutes per video'},
+    {id:'pro', name:'Pro', price:30000, days:30, videosPerDay:2, maxMinutes:5, normalPerVideo:1000, note:'Up to 2 videos per day · maximum 5 minutes per video'}
+  ],
+  video: [
+    {id:'basic', name:'Basic Edit', price:1000, duration:'Up to 1 min', requirement:'Basic', delivery:'3–5 days'},
+    {id:'standard', name:'Standard Edit', price:6300, duration:'Up to 5 min', requirement:'Standard', delivery:'3–5 days'},
+    {id:'premium', name:'Premium Visual', price:11250, duration:'Up to 10 min', requirement:'Advanced', delivery:'5–7 days'}
+  ],
+  graphic: [
+    {id:'cv', name:'CV / Resume', price:1800, duration:'1 design', requirement:'Basic', delivery:'2–3 days'},
+    {id:'poster', name:'Poster / Flyer', price:2250, duration:'1 design', requirement:'Standard', delivery:'2–3 days'},
+    {id:'book', name:'Book Cover', price:2700, duration:'1 cover', requirement:'Advanced', delivery:'3–5 days'},
+    {id:'social', name:'Social Media Post', price:1350, duration:'1 design', requirement:'Basic', delivery:'24–48 hours'},
+    {id:'thumbnail', name:'Thumbnail', price:1350, duration:'1 design', requirement:'Basic', delivery:'24–48 hours'},
+    {id:'card', name:'Business Card', price:900, duration:'1 design', requirement:'Basic', delivery:'2–3 days'}
+  ]
+};
