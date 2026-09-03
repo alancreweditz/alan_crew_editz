@@ -10,9 +10,9 @@ window.PORTFOLIO_PROJECTS = [
     "startDate": "2026-08-23",
     "endDate": "2026-08-23",
     "thumbnail": "https://i.postimg.cc/pTC2RtTJ/S04-E1.png",
-    "video": "https://youtu.be/tlfa3nSYKqo",
+    "video": "https://youtu.be/jOrHl4cUopU?si=IdWnDbFiGwsYlYGb",
     "github": "https://github.com/alancreweditz",
-    "demo": "https://youtu.be/tlfa3nSYKqo"
+    "demo": "https://youtu.be/jOrHl4cUopU?si=IdWnDbFiGwsYlYGb"
   },
   {
     "id": "project-1787844089487",
